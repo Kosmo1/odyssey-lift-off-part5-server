@@ -13,8 +13,8 @@ async function startApolloServer(typeDefs, resolvers) {
       };
     },
   });
-
-  const { url, port } = await server.listen();
+    // Heroku needs us to us the PORT env var if set
+  const { url, port } = await server.listen({port: process.env.PORT || 4000});
   console.log(`
       🚀  Server is running
       🔉  Listening on port ${port}
